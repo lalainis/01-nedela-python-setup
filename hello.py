@@ -1,1 +1,5 @@
 print('Hello from VS Code')
+print("Hello, world!")
+print("1. mājas darbs paveikts!")
+print("Bija grūtības, bet es tiku galā.")
+print("Ceru ka esmu pareizi visu izdarījis.")
