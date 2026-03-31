@@ -1,22 +1,30 @@
 import sys
 
-if len(sys.argv) == 2:
+while True:
     try:
-        N = int(sys.argv[1])
+        N = int(input("Ievadi skaitli N: "))
+        break
     except ValueError:
-        print("N must be an integer")
-        sys.exit(1)
-else:
-    N = 100  # default value
+        print("N jābūt skaitlim mēģini vēlreiz.")
 
 for i in range(1, N + 1):
     if i % 3 == 0 and i % 5 == 0:
-        print("FizzBuzz")
+        if i % 2 == 0:
+            print("PAIR FizzBuzz")
+        else:
+            print("FizzBuzz")
     elif i % 3 == 0:
-        print("Fizz")
+        if i % 2 == 0:
+            print("PAIR Fizz")
+        else:
+            print("Fizz")
     elif i % 5 == 0:
-        print("Buzz")
+        if i % 2 == 0:
+            print("PAIR Buzz")
+        else:
+            print("Buzz")
     else:
-        print(i)
-else: i % 2 == 0 
-    print("PAIR")   
+        if i % 2 == 0:
+            print("PAIR")
+        else:
+            print(i)
