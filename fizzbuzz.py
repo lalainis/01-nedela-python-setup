@@ -1,11 +1,18 @@
 import sys
+import random
 
 while True:
-    try:
-        N = int(input("Ievadi skaitli N: "))
+    user_input = input("Ievadi skaitli N (vai spied Enter priekš nejauša 10-25): ")
+    if user_input == '':
+        N = random.randint(10, 25)
+        print(f"Izmanto nejaušu N: {N}")
         break
-    except ValueError:
-        print("N jābūt skaitlim mēģini vēlreiz.")
+    else:
+        try:
+            N = int(user_input)
+            break
+        except ValueError:
+            print("N jābūt veselam skaitlim. Mēģini vēlreiz.")
 
 for i in range(1, N + 1):
     if i % 3 == 0 and i % 5 == 0:
