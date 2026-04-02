@@ -23,3 +23,21 @@ if count > 0:
 	print("Average value of the list (for loop):", average_for)
 else:
 	print("Cannot calculate average of an empty list.")
+
+# Filter and print only the even (pair) numbers from the original list
+pairs = []
+for num in [3, 7, 12, 25, 42, 56, 89]:
+    if num % 2 == 0:
+        pairs.append(num)
+print("Even (pair) numbers in the original list:", pairs)
+
+# Slicing: first 3 and last 2 elements from the original list
+original_numbers = [3, 7, 12, 25, 42, 56, 89]
+first_three = original_numbers[:3]
+last_two = original_numbers[-2:]
+print("First 3 elements:", first_three)
+print("Last 2 elements:", last_two)
+
+# Print each second number from the original list
+second_numbers = original_numbers[1::2]
+print("Each second number of the original list:", second_numbers)
