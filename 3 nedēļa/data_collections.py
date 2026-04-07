@@ -41,3 +41,30 @@ print("Last 2 elements:", last_two)
 # Print each second number from the original list
 second_numbers = original_numbers[1::2]
 print("Each second number of the original list:", second_numbers)
+
+#B daļa — Vārdnīcas
+
+# Vocabulary with 3 names and grades
+vocabulary = {
+	"Anna": 9,
+	"Janis": 7,
+	"Liga": 10,
+	"Andris": 8,
+}
+print("Vocabulary with names and grades:", vocabulary)
+
+# Iteration with for name, grade in vocabulary.items()
+for name, grade in vocabulary.items():
+	print(f"{name}: {grade}")
+
+# Find and print the student with the highest grade using a for loop
+max_grade = -1
+max_student = None
+for name, grade in vocabulary.items():
+	if grade > max_grade:
+		max_grade = grade
+		max_student = name
+if max_student is not None:
+	print(f"Student with the highest grade: {max_student} ({max_grade})")
+else:
+	print("No students found.")
