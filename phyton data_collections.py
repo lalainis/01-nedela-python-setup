@@ -2,7 +2,10 @@
 numbers = [3, 7, 12,16, 25, 42, 56, 66, 77, 89]
 
 # Pretty print the list
-print("--Saraksti--")
+print("\n============================")
+print("   Saraksts ar skaitļiem")
+print("============================")
+#print(f"Saraksts: {numbers}")
 
 sum_for = 0
 count = 0
@@ -14,16 +17,16 @@ if count > 0:
 	average_for = sum_for / count
 else:
 	print("Nevar aprēķināt vidējo vērtību tukšam sarakstam.")
-print("Summa :", sum_for, "Vidējā vērtība :", average_for)
+print(f"Summa: {sum_for} | Vidējā vērtība: {average_for:.2f}")
 
 sum_for = 0
 pairs = []
 for num in numbers:
 	if num % 2 == 0:
 		pairs.append(num)
-print("Pāra skaitļi:", pairs)
+print(f"Pāra skaitļi sarakstā: {pairs}")
 
-print("Pirmie 3 elementi no saraksta:", numbers[:3], "Pēdējie 2 elementi no saraksta:", numbers[-2:])
+print(f"Pirmie 3 elementi: {numbers[:3]} | Pēdējie 3 elementi: {numbers[-3:]}")
 
 vocabulary = {
   	"Anna": 90,
@@ -38,10 +41,14 @@ vocabulary = {
 	"Laura": 92,
 	"Juris": 88,
 }
-print("---Vārdnīca ar vārdiem un atzīmēm:---")
+print("\n================================")
+print(" Vārdnīca ar vārdiem un atzīmēm")
+print("================================")
+print(f"{'Vārds':<10} | Atzīme")
+print("--------------------------------")
 
 for name, grade in vocabulary.items():
-    print(f"{name}: {grade}")
+	print(f"{name:<10} | {grade}")
 
 max_grade = -1
 max_student = None
@@ -50,12 +57,13 @@ for name, grade in vocabulary.items():
         max_grade = grade
         max_student = name
 if max_student is not None:
-	print(f"Students ar augstāko atzīmi: {max_student}, atzīme: {max_grade}")
+    print(f"\nStudents ar augstāko atzīmi: {max_student}, atzīme: {max_grade}")
 else:
-	print("Nav atrasti studenti.")
+    print("\nNav atrasti studenti.")
 
+print("\nStudenti ar atzīmi >= 80:")
 count = 1
 for name, grade in vocabulary.items():
-	if grade >= 80:
-		print(f"{count}. {name}: {grade}")
-		count += 1
+    if grade >= 80:
+        print(f"{count}. {name:<10} | {grade}")
+        count += 1
