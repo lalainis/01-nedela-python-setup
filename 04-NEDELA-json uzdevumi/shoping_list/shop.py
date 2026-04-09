@@ -54,3 +54,5 @@ if __name__ == "__main__":
 	else:
 		print(f"Nezināma komanda: {command}")
 		print("Lietošana: python shop.py [add|list|total|clear] ...")
+		sys.exit(1)
+		
