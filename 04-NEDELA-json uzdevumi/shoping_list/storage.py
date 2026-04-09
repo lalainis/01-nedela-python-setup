@@ -4,3 +4,8 @@ def load_list():
         return []
     with open(LIST_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
+
+def save_list(items):
+    """Saglabā iepirkumu sarakstu JSON failā."""
+    with open(LIST_FILE, "w", encoding="utf-8") as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)
