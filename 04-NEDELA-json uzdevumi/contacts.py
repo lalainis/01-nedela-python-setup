@@ -1,20 +1,73 @@
+def search_contact(name, filename="contacts.json"):
+    """Searches for a contact by name and prints the result."""
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            contacts = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        contacts = []
+    found = False
+    for c in contacts:
+        if c['name'].lower() == name.lower():
+            print(f"Found: {c['name']} - {c['phone']}")
+            found = True
+    if not found:
+        print(f"No contact found with name '{name}'.")
 import json
+def list_contacts(filename="contacts.json"):
+    """Lists all contacts from the JSON file."""
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            contacts = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        contacts = []
+    if not contacts:
+        print("No contacts found.")
+    else:
+        print("Contacts:")
+        for c in contacts:
+            print(f"- {c['name']}: {c['phone']}")
 
-# Define the contacts list as a list of dictionaries
-contacts = [
-    {"name": "Anna Bērziņa", "phone": "+371 26123456"},
-    {"name": "Jānis Kalniņš", "phone": "00371 29123456"},
-    {"name": "Līga Ozoliņa", "phone": "12345678"},
-    {"name": "Andris Liepiņš", "phone": "+371 1234567"},
-    {"name": "Zane Jansone", "phone": "00371 1234567"},
-    {"name": "Marta Sproģe", "phone": "+371 12345678"},
-    {"name": "Pēteris Bērziņš", "phone": "00371 12345678"},
-    {"name": "Ilze Vītola", "phone": "+371 123456789"},
-    {"name": "Dainis Kalniņš", "phone": "00371 123456789"}
-]
 
-# Save the contacts list to a JSON file
-with open("contacts.json", "w", encoding="utf-8") as f:
-    json.dump(contacts, f, ensure_ascii=False, indent=4)
+# Add a new contact to contacts.json
 
-print("Contacts saved to contacts.json")
+
+def add_contact(name, phone, filename="contacts.json"):
+    """
+    Adds a new contact to the JSON file.
+    Args:
+        name (str): Contact name.
+        phone (str): Contact phone number.
+        filename (str): Path to the JSON file.
+    """
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            contacts = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        contacts = []
+    contacts.append({"name": name, "phone": phone})
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(contacts, f, ensure_ascii=False, indent=4)
+    print(f"Contact '{name}' added!")
+
+if __name__ == "__main__":
+    while True:
+        print("\nContact Manager Menu:")
+        print("1. Add new contact")
+        print("2. List all contacts")
+        print("3. Search contact by name")
+        print("4. Exit")
+        choice = input("Choose an option (1-4): ")
+        if choice == "1":
+            name = input("Enter name: ")
+            phone = input("Enter phone: ")
+            add_contact(name, phone)
+        elif choice == "2":
+            list_contacts()
+        elif choice == "3":
+            name = input("Enter name to search: ")
+            search_contact(name)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
