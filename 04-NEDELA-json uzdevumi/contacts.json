@@ -1,42 +1,46 @@
 [
-    {
-        "name": "Anna Bērziņa",
-        "phone": "+371 26123456"
-    },
-    {
-        "name": "Jānis Kalniņš",
-        "phone": "00371 29123456"
-    },
-    {
-        "name": "Līga Ozoliņa",
-        "phone": "12345678"
-    },
-    {
-        "name": "Andris Liepiņš",
-        "phone": "+371 1234567"
-    },
-    {
-        "name": "Zane Jansone",
-        "phone": "00371 1234567"
-    },
-    {
-        "name": "Marta Sproģe",
-        "phone": "+371 12345678"
-    },
-    {
-        "name": "Pēteris Bērziņš",
-        "phone": "00371 12345678"
-    },
-    {
-        "name": "Ilze Vītola",
-        "phone": "+371 123456789"
-    },
-    {
-        "name": "Dainis Kalniņš",
-        "phone": "00371 123456789"
-    },
-    {
-        "name": "Kārlis Ozols",
-        "phone": "+371 987654322"
-    }
+  {
+    "name": "Anna Bērziņa",
+    "phone": "+371 26123456"
+  },
+  {
+    "name": "Jānis Kalniņš",
+    "phone": "00371 29123456"
+  },
+  {
+    "name": "Līga Ozoliņa",
+    "phone": "12345678"
+  },
+  {
+    "name": "Andris Liepiņš",
+    "phone": "+371 1234567"
+  },
+  {
+    "name": "Zane Jansone",
+    "phone": "00371 1234567"
+  },
+  {
+    "name": "Marta Sproģe",
+    "phone": "+371 12345678"
+  },
+  {
+    "name": "Pēteris Bērziņš",
+    "phone": "00371 12345678"
+  },
+  {
+    "name": "Ilze Vītola",
+    "phone": "+371 123456789"
+  },
+  {
+    "name": "Dainis Kalniņš",
+    "phone": "00371 123456789"
+  },
+  {
+    "name": "Kārlis Ozols",
+    "phone": "+371 987654322"
+  },
+  {
+    "name": "Oskars Kalpaks",
+    "phone": "+371 88888888"
+  }
 ]

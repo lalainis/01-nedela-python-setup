@@ -1,73 +1,61 @@
-def search_contact(name, filename="contacts.json"):
-    """Searches for a contact by name and prints the result."""
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            contacts = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        contacts = []
-    found = False
-    for c in contacts:
-        if c['name'].lower() == name.lower():
-            print(f"Found: {c['name']} - {c['phone']}")
-            found = True
-    if not found:
-        print(f"No contact found with name '{name}'.")
 import json
-def list_contacts(filename="contacts.json"):
-    """Lists all contacts from the JSON file."""
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            contacts = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        contacts = []
-    if not contacts:
-        print("No contacts found.")
-    else:
-        print("Contacts:")
-        for c in contacts:
-            print(f"- {c['name']}: {c['phone']}")
+import sys
+import os
 
+CONTACTS_FILE = "contacts.json"
 
-# Add a new contact to contacts.json
+def load_contacts():
+	"""Nolasa kontaktus no JSON faila. Ja fails neeksistē, atgriež []."""
+	if not os.path.exists(CONTACTS_FILE):
+		return []
+	with open(CONTACTS_FILE, "r", encoding="utf-8") as f:
+		return json.load(f)
 
+def save_contacts(contacts):
+	"""Saglabā kontaktu sarakstu JSON failā."""
+	with open(CONTACTS_FILE, "w", encoding="utf-8") as f:
+		json.dump(contacts, f, indent=2, ensure_ascii=False)
 
-def add_contact(name, phone, filename="contacts.json"):
-    """
-    Adds a new contact to the JSON file.
-    Args:
-        name (str): Contact name.
-        phone (str): Contact phone number.
-        filename (str): Path to the JSON file.
-    """
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            contacts = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        contacts = []
-    contacts.append({"name": name, "phone": phone})
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump(contacts, f, ensure_ascii=False, indent=4)
-    print(f"Contact '{name}' added!")
-
+# Command-line interface
 if __name__ == "__main__":
-    while True:
-        print("\nContact Manager Menu:")
-        print("1. Add new contact")
-        print("2. List all contacts")
-        print("3. Search contact by name")
-        print("4. Exit")
-        choice = input("Choose an option (1-4): ")
-        if choice == "1":
-            name = input("Enter name: ")
-            phone = input("Enter phone: ")
-            add_contact(name, phone)
-        elif choice == "2":
-            list_contacts()
-        elif choice == "3":
-            name = input("Enter name to search: ")
-            search_contact(name)
-        elif choice == "4":
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+	if len(sys.argv) < 2:
+		print("Usage: python contacts.py [add|list|search] ...")
+		sys.exit(1)
+
+	command = sys.argv[1]
+
+	if command == "list":
+		contacts = load_contacts()
+		if not contacts:
+			print("No contacts found.")
+		else:
+			for i, contact in enumerate(contacts, 1):
+				print(f"{i}. {contact}")
+
+	elif command == "add":
+		if len(sys.argv) < 4:
+			print("Usage: python contacts.py add <name> <phone>")
+			sys.exit(1)
+		name = sys.argv[2]
+		phone = sys.argv[3]
+		contacts = load_contacts()
+		contacts.append({"name": name, "phone": phone})
+		save_contacts(contacts)
+		print(f"Contact added: {name} ({phone})")
+
+	elif command == "search":
+		if len(sys.argv) < 3:
+			print("Usage: python contacts.py search <name_part>")
+			sys.exit(1)
+		name_part = sys.argv[2].lower()
+		contacts = load_contacts()
+		results = [c for c in contacts if name_part in c.get("name", "").lower()]
+		if not results:
+			print(f"No contacts found matching '{name_part}'.")
+		else:
+			for i, contact in enumerate(results, 1):
+				print(f"{i}. {contact}")
+
+	else:
+		print(f"Unknown command: {command}")
+		print("Usage: python contacts.py [add|list|search] ...")
