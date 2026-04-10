@@ -12,14 +12,14 @@ def calc_line_total(item):
     except (KeyError, ValueError, TypeError):
         return 0.0
     
-    def calc_grand_total(items):
+def calc_grand_total(items):
         """Aprēķina kopējo summu visām precēm sarakstā."""
         total = 0.0
         for item in items:
             total += calc_line_total(item)
         return total
     
-    def count_units(items):
+def count_units(items):
         """Saskaita kopējo preču daudzumu sarakstā."""
         total_units = 0
         for item in items:

@@ -1,7 +1,10 @@
+
 import sys
 import os
 import json
 from storage import load_list, save_list
+from utils import calc_line_total
+from utils import calc_grand_total, count_units
 
 
 if __name__ == "__main__":
@@ -21,36 +24,29 @@ if __name__ == "__main__":
 				name = item["name"].capitalize() if isinstance(item, dict) and "name" in item else str(item).capitalize()
 				price = item["price"] if isinstance(item, dict) and "price" in item else ""
 				quantity = item["quantity"] if isinstance(item, dict) and "quantity" in item else "1"
-				print(f"{name} - {price} EUR x {quantity}")
+				print(f"{name} -{quantity} x {price} EUR")
 
 	elif command == "add":
 		if len(sys.argv) < 5:
-			print("Lietošana: python shop.py add <name> <price> <quantity>")
+			print("Lietošana: python shop.py add <name> <quantity> <price> ")
 			sys.exit(1)
 		name = sys.argv[2]
-		price = sys.argv[3]
-		quantity = sys.argv[4]
+		quantity = sys.argv[3]
+		price = sys.argv[4]
 		items = load_list()
-		items.append({"name": name, "price": price, "quantity": quantity})
+		items.append({"name": name, "quantity": quantity, "price": price})
 		save_list(items)
-		print(f"✓ Produkts pievienots: {name} ({price} EUR, daudzums: {quantity})")
+		print(f"✓ Produkts pievienots: {name} (daudzums: {quantity}, {price} EUR)")
 
 	elif command == "total":
 		items = load_list()
 		if not items:
 			print("Nav neviena prece iepirkumu sarakstā.")
 		else:
-			total = 0
-			total_products = 0
-			for item in items:
-				try:
-					price = float(item["price"])
-					quantity = int(item["quantity"]) if "quantity" in item else 1
-					total += price * quantity
-					total_products += quantity
-				except (KeyError, ValueError, TypeError):
-					continue
-			print(f"Kopējā summa: {total:.2f} EUR (Produktu skaits {total_products})")
+			total = calc_grand_total(items)
+			total_quantity = count_units(items)
+			num_products = len(items)
+			print(f"Kopējā summa: {total:.2f} EUR (vienību skaits: {total_quantity}, produktu skaits: {num_products})")
 
 	elif command == "clear":
 		save_list([])
