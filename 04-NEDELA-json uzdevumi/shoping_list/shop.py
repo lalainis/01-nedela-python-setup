@@ -38,8 +38,26 @@ if __name__ == "__main__":
 			sys.exit(1)
 		name = sys.argv[2]
 		quantity = sys.argv[3]
+		try:
+			quantity_val = int(quantity)
+			if quantity_val <= 0:
+				print("Kļūda: daudzumam jābūt pozitīvam veselam skaitlim.")
+				sys.exit(1)
+			quantity = str(quantity_val)
+		except Exception:
+			print("Kļūda: daudzumam jābūt veselam skaitlim.")
+			sys.exit(1)
 		if len(sys.argv) >= 5:
 			price = sys.argv[4]
+			try:
+				price_val = round(float(price), 2)
+				if price_val <= 0:
+					print("Kļūda: cenai jābūt pozitīvai vērtībai.")
+					sys.exit(1)
+				price = f"{price_val:.2f}"
+			except Exception:
+				print("Kļūda: cena nav derīgs skaitlis.")
+				sys.exit(1)
 			old_price = get_price(name)
 			if old_price:
 				print(f"Atrasta iepriekšējā cena produktam '{name}': {old_price} EUR. Jaunā cena: {price} EUR.")
@@ -51,8 +69,16 @@ if __name__ == "__main__":
 						break
 					elif confirm in ('m', 'M'):
 						price = input("Lūdzu, ievadiet pareizo cenu: ")
+						try:
+							price_val = round(float(price), 2)
+							if price_val <= 0:
+								print("Kļūda: cenai jābūt pozitīvai vērtībai.")
+								sys.exit(1)
+							price = f"{price_val:.2f}"
+						except Exception:
+							print("Kļūda: cena nav derīgs skaitlis.")
+							sys.exit(1)
 						set_price(name, price)
-						price = str(price)
 						break
 					else:
 						print("Lūdzu, ievadiet 'a' apstiprināšanai vai 'm' maiņai.")
@@ -63,6 +89,15 @@ if __name__ == "__main__":
 			price = get_price(name)
 			if not price or price == 0.0:
 				price = input(f"Nav atrasta cena produktam '{name}'. Lūdzu, norādiet cenu: ")
+				try:
+					price_val = round(float(price), 2)
+					if price_val <= 0:
+						print("Kļūda: cenai jābūt pozitīvai vērtībai.")
+						sys.exit(1)
+					price = f"{price_val:.2f}"
+				except Exception:
+					print("Kļūda: cena nav derīgs skaitlis.")
+					sys.exit(1)
 				set_price(name, price)
 			else:
 				print(f"Atrasta cena produktam '{name}': {price} EUR.")
@@ -72,6 +107,15 @@ if __name__ == "__main__":
 						break
 					elif confirm in ('m', 'M'):
 						price = input("Lūdzu, ievadiet pareizo cenu: ")
+						try:
+							price_val = round(float(price), 2)
+							if price_val <= 0:
+								print("Kļūda: cenai jābūt pozitīvai vērtībai.")
+								sys.exit(1)
+							price = f"{price_val:.2f}"
+						except Exception:
+							print("Kļūda: cena nav derīgs skaitlis.")
+							sys.exit(1)
 						set_price(name, price)
 						break
 					else:
