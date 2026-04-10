@@ -79,6 +79,7 @@ if __name__ == "__main__":
 							print("Kļūda: cena nav derīgs skaitlis.")
 							sys.exit(1)
 						set_price(name, price)
+						print(f"✓  Cena ir mainīta. jaunā cena  - {price} EUR/gab.")
 						break
 					else:
 						print("Lūdzu, ievadiet 'a' apstiprināšanai vai 'm' maiņai.")
@@ -117,6 +118,7 @@ if __name__ == "__main__":
 							print("Kļūda: cena nav derīgs skaitlis.")
 							sys.exit(1)
 						set_price(name, price)
+						print(f"✓  Cena ir mainīta. jaunā cena  - {price} EUR/gab.")
 						break
 					else:
 						print("Lūdzu, ievadiet 'A' apstiprināšanai vai 'M' maiņai.")

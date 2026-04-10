@@ -21,7 +21,7 @@
     "active": "2.321"
   },
   "čipsi": {
-    "active": "1.99"
+    "active": "2.01"
   },
   "krejums_inactive": [
     {
@@ -55,6 +55,14 @@
     {
       "price": "1.975",
       "timestamp": "2026-04-10 16:13:30"
+    },
+    {
+      "price": "1.99",
+      "timestamp": "2026-04-10 16:30:38"
+    },
+    {
+      "price": "2.00",
+      "timestamp": "2026-04-10 16:31:12"
     }
   ],
   "kafija": {
