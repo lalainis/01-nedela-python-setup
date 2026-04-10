@@ -21,7 +21,7 @@ if __name__ == "__main__":
 				name = item["name"].capitalize() if isinstance(item, dict) and "name" in item else str(item).capitalize()
 				price = item["price"] if isinstance(item, dict) and "price" in item else ""
 				quantity = item["quantity"] if isinstance(item, dict) and "quantity" in item else "1"
-				print(f"{name} - {price} EUR x {quantity}")
+				print(f"{name} - {price} EUR/gab. x {quantity}")
 
 	elif command == "add":
 		if len(sys.argv) < 5:
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 		items = load_list()
 		items.append({"name": name, "price": price, "quantity": quantity})
 		save_list(items)
-		print(f"✓ Produkts pievienots: {name} ({price} EUR, daudzums: {quantity})")
+		print(f"✓ Produkts pievienots: {name} ({price} EUR/gab., daudzums: {quantity})")
 
 	elif command == "total":
 		items = load_list()
@@ -41,16 +41,17 @@ if __name__ == "__main__":
 			print("Nav neviena prece iepirkumu sarakstā.")
 		else:
 			total = 0
-			total_products = 0
+			total_quantity = 0
 			for item in items:
 				try:
 					price = float(item["price"])
 					quantity = int(item["quantity"]) if "quantity" in item else 1
 					total += price * quantity
-					total_products += quantity
+					total_quantity += quantity
 				except (KeyError, ValueError, TypeError):
 					continue
-			print(f"Kopējā summa: {total:.2f} EUR (Produktu skaits {total_products})")
+			num_products = len(items)
+			print(f"Kopējā summa: {total:.2f} EUR (  vienību skaits: {total_quantity}, produktu skaits: {num_products},)")
 
 	elif command == "clear":
 		save_list([])
