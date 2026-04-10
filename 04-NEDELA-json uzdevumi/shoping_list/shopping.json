@@ -13,5 +13,20 @@
     "name": "maize",
     "quantity": "1",
     "price": "1.55"
+  },
+  {
+    "name": "maize",
+    "quantity": "1",
+    "price": "1.55"
+  },
+  {
+    "name": "krejums",
+    "quantity": "3",
+    "price": "1.95"
+  },
+  {
+    "name": "čipsi",
+    "quantity": "2",
+    "price": "3.24"
   }
 ]

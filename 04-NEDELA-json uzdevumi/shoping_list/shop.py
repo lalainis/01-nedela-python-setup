@@ -20,11 +20,16 @@ if __name__ == "__main__":
 			print("Nav neviena prece iepirkumu sarakstā.")
 		else:
 			print("Iepirkumu saraksts:")
+			from utils import calc_line_total
 			for i, item in enumerate(items, 1):
 				name = item["name"].capitalize() if isinstance(item, dict) and "name" in item else str(item).capitalize()
 				price = item["price"] if isinstance(item, dict) and "price" in item else ""
 				quantity = item["quantity"] if isinstance(item, dict) and "quantity" in item else "1"
-				print(f"{name} -{quantity} x {price} EUR")
+				try:
+					total_price = calc_line_total(item)
+				except Exception:
+					total_price = 0
+				print(f"{name} - {quantity} x {price} EUR/gab. - {total_price:.2f} EUR")
 
 	elif command == "add":
 		if len(sys.argv) < 5:
@@ -34,9 +39,12 @@ if __name__ == "__main__":
 		quantity = sys.argv[3]
 		price = sys.argv[4]
 		items = load_list()
-		items.append({"name": name, "quantity": quantity, "price": price})
+		item = {"name": name, "quantity": quantity, "price": price}
+		items.append(item)
 		save_list(items)
-		print(f"✓ Produkts pievienots: {name} (daudzums: {quantity}, {price} EUR)")
+		from utils import calc_line_total
+		total_price = calc_line_total(item)
+		print(f"✓ Produkts pievienots: {name.capitalize()} - {quantity} x {price} EUR/gab. - kopā: {total_price:.2f} EUR")
 
 	elif command == "total":
 		items = load_list()
