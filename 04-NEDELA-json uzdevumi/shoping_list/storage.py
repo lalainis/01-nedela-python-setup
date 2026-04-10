@@ -2,7 +2,7 @@ import json
 import sys
 import os
 
-LIST_FILE = "shopping.json"
+LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "shopping.json")
 
 def load_list():
     """Ielādē iepirkumu sarakstu no JSON faila."""
