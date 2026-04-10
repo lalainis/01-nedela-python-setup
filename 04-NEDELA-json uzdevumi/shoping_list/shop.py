@@ -29,11 +29,19 @@ if __name__ == "__main__":
 
 	elif command == "add":
 		if len(sys.argv) < 5:
-			print("Lietošana: python shop.py add <name> <price> <quantity>")
+			print("Lietošana: python shop.py add <nosaukums> <cena> <daudzums>")
 			sys.exit(1)
 		name = sys.argv[2]
 		price = sys.argv[3]
 		quantity = sys.argv[4]
+		try:
+			quantity_int = int(quantity)
+			if quantity_int <= 0:
+				print("Kļūda: daudzumam jābūt pozitīvam skaitlim!")
+				sys.exit(1)
+		except ValueError:
+			print("Kļūda: daudzumam jābūt veselam skaitlim!")
+			sys.exit(1)
 		items = load_list()
 		items.append({"name": name, "price": price, "quantity": quantity})
 		save_list(items)
