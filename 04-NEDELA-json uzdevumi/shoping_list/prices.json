@@ -2,13 +2,23 @@
   "krejums": "1.95",
   "piens": "1.30",
   "maize": {
-    "active": "1.63"
+    "active": "1.6e3"
   },
   "sviests": "1.76",
   "maize_inactive": [
     {
       "price": "1.50",
       "timestamp": "2026-04-10 15:11:53"
+    },
+    {
+      "price": "1.63",
+      "timestamp": "2026-04-10 15:14:01"
     }
-  ]
+  ],
+  "sula": {
+    "active": "0.95"
+  },
+  "čipsi": {
+    "active": "2.95"
+  }
 }
