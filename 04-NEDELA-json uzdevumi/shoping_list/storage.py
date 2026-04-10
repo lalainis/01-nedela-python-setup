@@ -4,6 +4,8 @@ import os
 
 LIST_FILE = "shopping.json"
 
+PRICES_FILE = "prices.json"
+
 def load_list():
     """Ielādē iepirkumu sarakstu no JSON faila."""
     if not os.path.exists(LIST_FILE):
@@ -18,14 +20,14 @@ def save_list(items):
 
 def load_prices():      
     """Ielādē cenu sarakstu no JSON faila."""
-    if not os.path.exists("prices.json"):
+    if not os.path.exists(PRICES_FILE):
         return {}
-    with open("prices.json", "r", encoding="utf-8") as f:
+    with open(PRICES_FILE, "r", encoding="utf-8") as f:
         return json.load(f) 
         
 def save_prices(prices):
     """Saglabā cenu sarakstu JSON failā."""
-    with open("prices.json", "w", encoding="utf-8") as f:
+    with open(PRICES_FILE, "w", encoding="utf-8") as f:
         json.dump(prices, f, ensure_ascii=False, indent=2) 
 
 def get_price(item_name):
@@ -38,4 +40,3 @@ def set_price(item_name, price):
     prices = load_prices()
     prices[item_name] = price
     save_prices(prices)
-     

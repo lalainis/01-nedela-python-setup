@@ -3,6 +3,7 @@ import sys
 import os
 import json
 from storage import load_list, save_list
+frrom storage import load_prices, save_prices, get_price, set_price
 from utils import calc_line_total
 from utils import calc_grand_total, count_units
 
