@@ -3,7 +3,7 @@ import sys
 import os
 import json
 from storage import load_list, save_list
-frrom storage import load_prices, save_prices, get_price, set_price
+from storage import load_prices, save_prices, get_price, set_price
 from utils import calc_line_total
 from utils import calc_grand_total, count_units
 
@@ -33,12 +33,19 @@ if __name__ == "__main__":
 				print(f"{name} - {quantity} x {price} EUR/gab. - {total_price:.2f} EUR")
 
 	elif command == "add":
-		if len(sys.argv) < 5:
-			print("Lietošana: python shop.py add <nosaukums> <daudzums> <cena> ")
+		if len(sys.argv) < 4:
+			print("Lietošana: python shop.py add <nosaukums> <daudzums> [<cena>]")
 			sys.exit(1)
 		name = sys.argv[2]
 		quantity = sys.argv[3]
-		price = sys.argv[4]
+		if len(sys.argv) >= 5:
+			price = sys.argv[4]
+			set_price(name, price)
+		else:
+			price = get_price(name)
+			if not price or price == 0.0:
+				print(f"Nav atrasta cena produktam '{name}'. Lūdzu, norādiet cenu.")
+				sys.exit(1)
 		items = load_list()
 		item = {"name": name, "quantity": quantity, "price": price}
 		items.append(item)
