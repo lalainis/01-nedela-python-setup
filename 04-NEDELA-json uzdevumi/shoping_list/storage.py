@@ -33,10 +33,24 @@ def save_prices(prices):
 def get_price(item_name):
     """Iegūst preces cenu no cenas saraksta."""
     prices = load_prices()
-    return prices.get(item_name, 0.0)
+    val = prices.get(item_name, 0.0)
+    if isinstance(val, dict):
+        return val.get('active', 0.0)
+    return val
 
 def set_price(item_name, price):
     """Iestata preces cenu cenas sarakstā."""
+    import datetime
     prices = load_prices()
-    prices[item_name] = price
+    now = datetime.datetime.now().isoformat(sep=' ', timespec='seconds')
+    prev = prices.get(item_name)
+    if isinstance(prev, dict):
+        prev_price = prev.get('active')
+    else:
+        prev_price = prev
+    if prev_price and str(prev_price) != str(price):
+        inactive = prices.get(item_name + '_inactive', [])
+        inactive.append({"price": prev_price, "timestamp": now})
+        prices[item_name + '_inactive'] = inactive
+    prices[item_name] = {"active": price}
     save_prices(prices)
