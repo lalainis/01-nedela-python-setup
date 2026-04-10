@@ -1,5 +1,7 @@
 {
-  "krejums": "1.95",
+  "krejums": {
+    "active": "1.50"
+  },
   "piens": "1.30",
   "maize": {
     "active": "1.6e3"
@@ -16,9 +18,33 @@
     }
   ],
   "sula": {
-    "active": "0.95"
+    "active": "2.321"
   },
   "čipsi": {
     "active": "2.95"
-  }
+  },
+  "krejums_inactive": [
+    {
+      "price": "1.95",
+      "timestamp": "2026-04-10 15:25:22"
+    },
+    {
+      "price": "1.97",
+      "timestamp": "2026-04-10 15:29:35"
+    }
+  ],
+  "sula_inactive": [
+    {
+      "price": "0.95",
+      "timestamp": "2026-04-10 15:30:11"
+    },
+    {
+      "price": "b",
+      "timestamp": "2026-04-10 15:42:13"
+    },
+    {
+      "price": "2.3",
+      "timestamp": "2026-04-10 15:43:59"
+    }
+  ]
 }

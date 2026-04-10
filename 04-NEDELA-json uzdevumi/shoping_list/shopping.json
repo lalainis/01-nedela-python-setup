@@ -18,5 +18,40 @@
     "name": "čipsi",
     "quantity": "3",
     "price": "2.95"
+  },
+  {
+    "name": "krejums",
+    "quantity": "1",
+    "price": "1.97"
+  },
+  {
+    "name": "krejums",
+    "quantity": "1",
+    "price": "1.50"
+  },
+  {
+    "name": "čipsi",
+    "quantity": "3",
+    "price": "2.95"
+  },
+  {
+    "name": "sula",
+    "quantity": "4",
+    "price": "b"
+  },
+  {
+    "name": "sula",
+    "quantity": "4",
+    "price": "2.3"
+  },
+  {
+    "name": "sula",
+    "quantity": "4",
+    "price": "2.3"
+  },
+  {
+    "name": "sula",
+    "quantity": "4",
+    "price": "2.321"
   }
 ]

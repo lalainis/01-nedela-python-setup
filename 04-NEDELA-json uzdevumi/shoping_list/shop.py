@@ -41,15 +41,21 @@ if __name__ == "__main__":
 		if len(sys.argv) >= 5:
 			price = sys.argv[4]
 			old_price = get_price(name)
-			if old_price and float(price) != float(old_price):
+			if old_price:
 				print(f"Atrasta iepriekšējā cena produktam '{name}': {old_price} EUR. Jaunā cena: {price} EUR.")
-				confirm = input("Vai apstiprināt jauno cenu? (j/n): ").strip().lower()
-				if confirm == 'j':
-					set_price(name, price)
-					price = str(price)
-				else:
-					print("Tiek izmantota vecā cena.")
-					price = str(old_price)
+				while True:
+					confirm = input("Apstiprināt jauno cenu (A) vai mainīt (M)? ").strip()
+					if confirm in ('a', 'A'):
+						set_price(name, price)
+						price = str(price)
+						break
+					elif confirm in ('m', 'M'):
+						price = input("Lūdzu, ievadiet pareizo cenu: ")
+						set_price(name, price)
+						price = str(price)
+						break
+					else:
+						print("Lūdzu, ievadiet 'a' apstiprināšanai vai 'm' maiņai.")
 			else:
 				set_price(name, price)
 				price = str(price)
@@ -60,10 +66,16 @@ if __name__ == "__main__":
 				set_price(name, price)
 			else:
 				print(f"Atrasta cena produktam '{name}': {price} EUR.")
-				confirm = input("Vai šī ir pareizā cena? (j/n): ").strip().lower()
-				if confirm != 'j':
-					price = input("Lūdzu, ievadiet pareizo cenu: ")
-					set_price(name, price)
+				while True:
+					confirm = input("Apstiprināt cenu (A) vai mainīt (M)? ").strip()
+					if confirm in ('a', 'A'):
+						break
+					elif confirm in ('m', 'M'):
+						price = input("Lūdzu, ievadiet pareizo cenu: ")
+						set_price(name, price)
+						break
+					else:
+						print("Lūdzu, ievadiet 'A' apstiprināšanai vai 'M' maiņai.")
 		items = load_list()
 		item = {"name": name, "quantity": quantity, "price": price}
 		items.append(item)
