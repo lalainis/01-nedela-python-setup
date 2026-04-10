@@ -13,5 +13,10 @@
     "name": "čipsi",
     "quantity": "2",
     "price": "2.01"
+  },
+  {
+    "name": "avokado",
+    "quantity": "2",
+    "price": "3.56"
   }
 ]
