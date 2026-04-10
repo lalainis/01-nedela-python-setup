@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
 	elif command == "add":
 		if len(sys.argv) < 5:
-			print("Lietošana: python shop.py add <name> <quantity> <price> ")
+			print("Lietošana: python shop.py add <nosaukums> <daudzums> <cena> ")
 			sys.exit(1)
 		name = sys.argv[2]
 		quantity = sys.argv[3]
