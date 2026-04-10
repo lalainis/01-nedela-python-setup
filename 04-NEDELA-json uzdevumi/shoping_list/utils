@@ -1,0 +1,31 @@
+import sys
+import os
+import json
+from storage import load_list, save_list
+
+def calc_line_total(item):
+    """Aprēķina preces kopējo cenu, ņemot vērā cenu un daudzumu."""
+    try:
+        price = float(item["price"])
+        quantity = int(item["quantity"]) if "quantity" in item else 1
+        return price * quantity
+    except (KeyError, ValueError, TypeError):
+        return 0.0
+    
+    def calc_grand_total(items):
+        """Aprēķina kopējo summu visām precēm sarakstā."""
+        total = 0.0
+        for item in items:
+            total += calc_line_total(item)
+        return total
+    
+    def count_units(items):
+        """Saskaita kopējo preču daudzumu sarakstā."""
+        total_units = 0
+        for item in items:
+            try:
+                quantity = int(item["quantity"]) if "quantity" in item else 1
+                total_units += quantity
+            except (KeyError, ValueError, TypeError):
+                continue
+        return total_units
