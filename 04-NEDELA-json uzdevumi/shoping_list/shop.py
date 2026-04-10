@@ -21,7 +21,11 @@ if __name__ == "__main__":
 				name = item["name"].capitalize() if isinstance(item, dict) and "name" in item else str(item).capitalize()
 				price = item["price"] if isinstance(item, dict) and "price" in item else ""
 				quantity = item["quantity"] if isinstance(item, dict) and "quantity" in item else "1"
-				print(f"{name} - {price} EUR/gab. x {quantity}")
+				try:
+					total_price = float(price) * int(quantity)
+				except (ValueError, TypeError):
+					total_price = 0
+				print(f"{name} x {quantity} - {price} EUR/gab. - {total_price:.2f} EUR kopā")
 
 	elif command == "add":
 		if len(sys.argv) < 5:
