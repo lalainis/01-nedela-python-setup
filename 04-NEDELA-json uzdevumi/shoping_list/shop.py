@@ -41,16 +41,18 @@ if __name__ == "__main__":
 		if len(sys.argv) >= 5:
 			price = sys.argv[4]
 			old_price = get_price(name)
-			if old_price and str(price) != str(old_price):
+			if old_price and float(price) != float(old_price):
 				print(f"Atrasta iepriekšējā cena produktam '{name}': {old_price} EUR. Jaunā cena: {price} EUR.")
 				confirm = input("Vai apstiprināt jauno cenu? (j/n): ").strip().lower()
 				if confirm == 'j':
 					set_price(name, price)
+					price = str(price)
 				else:
 					print("Tiek izmantota vecā cena.")
-					price = old_price
+					price = str(old_price)
 			else:
 				set_price(name, price)
+				price = str(price)
 		else:
 			price = get_price(name)
 			if not price or price == 0.0:

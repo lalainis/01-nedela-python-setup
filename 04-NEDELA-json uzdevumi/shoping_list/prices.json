@@ -1,6 +1,14 @@
 {
   "krejums": "1.95",
   "piens": "1.30",
-  "maize": "1.50",
-  "sviests": "1.76"
+  "maize": {
+    "active": "1.63"
+  },
+  "sviests": "1.76",
+  "maize_inactive": [
+    {
+      "price": "1.50",
+      "timestamp": "2026-04-10 15:11:53"
+    }
+  ]
 }
