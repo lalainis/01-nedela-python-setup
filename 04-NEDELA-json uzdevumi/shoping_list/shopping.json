@@ -1,32 +1,12 @@
 [
   {
-    "name": "sviests",
-    "quantity": "3",
-    "price": "1.59"
-  },
-  {
-    "name": "maize",
-    "quantity": "1",
-    "price": "1.55"
-  },
-  {
-    "name": "maize",
-    "quantity": "1",
-    "price": "1.55"
-  },
-  {
-    "name": "maize",
-    "quantity": "1",
-    "price": "1.55"
-  },
-  {
-    "name": "krejums",
-    "quantity": "3",
-    "price": "1.95"
-  },
-  {
-    "name": "čipsi",
+    "name": "sula",
     "quantity": "2",
-    "price": "3.24"
+    "price": "0.95"
+  },
+  {
+    "name": "maize",
+    "quantity": "1",
+    "price": "1.50"
   }
 ]
