@@ -58,5 +58,25 @@
     "name": "sviests",
     "quantity": "2",
     "price": "1.59"
+  },
+  {
+    "name": "sviests",
+    "quantity": "2",
+    "price": "1.93"
+  },
+  {
+    "name": "sviests",
+    "quantity": "3",
+    "price": "1.76"
+  },
+  {
+    "name": "maize",
+    "quantity": "1",
+    "price": "1.55"
+  },
+  {
+    "name": "maize",
+    "quantity": "1",
+    "price": "1.50"
   }
 ]

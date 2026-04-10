@@ -40,12 +40,28 @@ if __name__ == "__main__":
 		quantity = sys.argv[3]
 		if len(sys.argv) >= 5:
 			price = sys.argv[4]
-			set_price(name, price)
+			old_price = get_price(name)
+			if old_price and str(price) != str(old_price):
+				print(f"Atrasta iepriekšējā cena produktam '{name}': {old_price} EUR. Jaunā cena: {price} EUR.")
+				confirm = input("Vai apstiprināt jauno cenu? (j/n): ").strip().lower()
+				if confirm == 'j':
+					set_price(name, price)
+				else:
+					print("Tiek izmantota vecā cena.")
+					price = old_price
+			else:
+				set_price(name, price)
 		else:
 			price = get_price(name)
 			if not price or price == 0.0:
-				print(f"Nav atrasta cena produktam '{name}'. Lūdzu, norādiet cenu.")
-				sys.exit(1)
+				price = input(f"Nav atrasta cena produktam '{name}'. Lūdzu, norādiet cenu: ")
+				set_price(name, price)
+			else:
+				print(f"Atrasta cena produktam '{name}': {price} EUR.")
+				confirm = input("Vai šī ir pareizā cena? (j/n): ").strip().lower()
+				if confirm != 'j':
+					price = input("Lūdzu, ievadiet pareizo cenu: ")
+					set_price(name, price)
 		items = load_list()
 		item = {"name": name, "quantity": quantity, "price": price}
 		items.append(item)
